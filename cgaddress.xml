@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="plugin" version="4.0" group="fields" method="upgrade">
+	<name>plg_fields_cgaddress</name>
+	<author>ConseilGouz</author>
+	<creationDate>2024-09-02</creationDate>
+	<copyright>Copyright (C) 2024 ConseilGouz. All rights reserved.</copyright>
+	<license>GNU General Public License version 3 or later; see LICENSE.txt</license>
+	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
+	<authorUrl>www.conseilgouz.com</authorUrl>
+	<version>1.0.0</version>
+	<description>PLG_FIELDS_CGADDRESS_XML_DESC</description>
+	<namespace path="src">ConseilGouz\Plugin\Fields\Cgaddress</namespace>
+   	<scriptfile>script.php</scriptfile>
+	<files>
+		<folder plugin="cgaddress">services</folder>
+		<folder>src</folder>
+		<folder>params</folder>
+		<folder>tmpl</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB/plg_fields_cgaddress.ini</language>
+		<language tag="en-GB">language/en-GB/plg_fields_cgaddress.sys.ini</language>
+		<language tag="fr-FR">language/fr-FR/plg_fields_cgaddress.ini</language>
+		<language tag="fr-FR">language/fr-FR/plg_fields_cgaddress.sys.ini</language>
+	</languages>
+	<media destination="plg_fields_cgaddress" folder="media">
+		<folder>js</folder>
+		<folder>css</folder>
+		<filename>index.html</filename>
+	</media>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+			</fieldset>
+		</fields>
+	</config>
+	<changelogurl>https://raw.githubusercontent.com/conseilgouz/plg_fields_cgzipcode_j4/master/cgaddress_changelog.xml</changelogurl>
+	<updateservers>
+		<server type="extension" name="plg_fields_cgaddress" priority="1">https://raw.githubusercontent.com/conseilgouz/updates_github/master/plg_fields_cgaddress_update.xml</server>
+	</updateservers>
+	
+</extension>

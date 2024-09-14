@@ -1,0 +1,89 @@
+<changelogs>
+	<changelog>
+		<element>cgzipcode</element>
+		<type>plugin</type>
+		<group>fields</group>
+		<version>2.1.1</version>
+        <note>
+            <item>Update : 12/10/2023</item>
+        </note>
+        <fix>
+            <item>Joomla 5.x compatibility</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cgzipcode</element>
+		<type>plugin</type>
+		<group>fields</group>
+		<version>2.1.0</version>
+        <note>
+            <item>Update : 25/09/2023</item>
+        </note>
+        <fix>
+            <item>Joomla 5.x compatibility</item>
+        </fix>
+		<change>
+			<item>Convert field plugin to service provider</item>
+		</change>
+	</changelog>
+	<changelog>
+		<element>cgzipcode</element>
+		<type>plugin</type>
+		<group>fields</group>
+		<version>2.0.4</version>
+        <note>
+            <item>Update : 15/11/2022</item>
+        </note>
+        <addition>
+            <item>fr : search in cedex if not found</item>
+        </addition>
+	</changelog>
+	<changelog>
+		<element>cgzipcode</element>
+		<type>plugin</type>
+		<group>fields</group>
+		<version>2.0.3</version>
+        <note>
+            <item>Update : 15/11/2022</item>
+        </note>
+         <fix>
+            <item>cleanup code</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cgzipcode</element>
+		<type>plugin</type>
+		<group>fields</group>
+		<version>2.0.2</version>
+        <note>
+            <item>Update : 14/11/2022</item>
+        </note>
+         <fix>
+            <item>packaging error</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cgzipcode</element>
+		<type>plugin</type>
+		<group>fields</group>
+		<version>2.0.1</version>
+        <note>
+            <item>Update : 14/11/2022</item>
+        </note>
+         <change>
+            <item>Display listbox if multiple answers</item>
+        </change>
+	</changelog>
+	<changelog>
+		<element>cgzipcode</element>
+		<type>plugin</type>
+		<group>fields</group>
+		<version>2.0.0</version>
+        <note>
+            <item>Update : 14/11/2022</item>
+        </note>
+         <change>
+            <item>Joomla 4.x version</item>
+        </change>
+	</changelog>
+</changelogs>
