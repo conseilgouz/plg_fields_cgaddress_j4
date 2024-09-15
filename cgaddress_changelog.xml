@@ -3,6 +3,18 @@
 		<element>plg_fields_cgaddress</element>
 		<type>plugin</type>
 		<group>fields</group>
+		<version>1.0.4</version>
+        <note>
+            <item>Update : 15/09/2024</item>
+        </note>
+        <fix>
+            <item>Script install : missing delete function</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>plg_fields_cgaddress</element>
+		<type>plugin</type>
+		<group>fields</group>
 		<version>1.0.3</version>
         <note>
             <item>Update : 15/09/2024</item>

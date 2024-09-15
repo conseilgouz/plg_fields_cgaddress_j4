@@ -1,7 +1,6 @@
 <?php
 /**
 * CG Address Plugin  - Joomla 4.x/5.x 
-* Version			: 1.0.0
 * copyright 		: Copyright (C) 2024 ConseilGouz. All rights reserved.
 * license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
 */
@@ -171,5 +170,16 @@ class plgfieldscgaddressInstallerScript
 		$db->execute();
 		Factory::getCache()->clean('_system');
 	}
-	
+    public function delete($files = [])
+    {
+        foreach ($files as $file) {
+            if (is_dir($file)) {
+                Folder::delete($file);
+            }
+
+            if (is_file($file)) {
+                File::delete($file);
+            }
+        }
+    }
 }
