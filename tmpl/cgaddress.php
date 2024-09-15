@@ -28,7 +28,11 @@ $disp = $address;
 if ( $field->fieldparams->get('showgps','true') == 'true') $disp .= ",GPS Long. : ".$long.',Lat. : '.$lat;
 echo $disp;
 
-$def_form = '<span class="cglibs d-none">';
+if ($context == "com_contact.mail") { // send email : ignore next information
+    echo '</div>'; // close opened div
+    return;
+} 
+$def_form = '<span class="cglibs" style="display:none">';
 $def_form .= '<input type="text" name="cgaddress" value="'.$address.'" class="cgaddress" />';
 $def_form .= ', GPS Long. <span class="cglong">'.$long.'</span> - Lat. <span class="cglat" >'.$lat.'</span></span>';
 echo $def_form;
@@ -46,7 +50,7 @@ echo '<input type="hidden" name="cgaddressfid" id="cgaddressfid" data-minlength=
 echo "</div>"; // end of cgaddress_field div
 /** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
 $base	= 'media/plg_fields_cgaddress/';
-$wa = Factory::getDocument()->getWebAssetManager();
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 $wa->registerAndUseStyle('leaflet','https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
 $wa->registerAndUseStyle('cgaddress',$base.'css/cgaddress.css');
 $wa->registerAndUseScript('leaflet','https://unpkg.com/leaflet@1.9.4/dist/leaflet.js');
