@@ -1,14 +1,12 @@
 /**
 ; Fields CG Address
-; Recuperation des donnees GPS, nom d'une ville depuis geo.api.gouv.fr
-; Version			: 1.0.0
 ; Package			: Joomla 4.x/5.x
 ; copyright 		: Copyright (C) 2024 ConseilGouz. All rights reserved.
 ; license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
 ; openstreemap/leaflet doc : https://leafletjs.com/index.html
  */
-var cgtimeout,callDelay=500,cgmap=[],cgmarker=[],isset=[],search=[],observer,
-	cglong=[],cglat=[],cglibs=[],cgaddress=[],cgaddressfid=[],cgonelist=[],zoom=[],popup=[],iti=[],
+var cgtimeout,cgcallDelay=500,cgmap=[],cgmarker=[],isset=[],cgsearch=[],cgobserver,
+	cglong=[],cglat=[],cglibs=[],cgaddress=[],cgaddressfid=[],cgonelist=[],cgzoom=[],cgpopup=[],cgiti=[],
 	cgapiUrl="https://api-adresse.data.gouv.fr/search/?q=";
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -25,23 +23,23 @@ document.addEventListener('DOMContentLoaded', function() {
         if (cglong[mapix].innerHTML == "") { // default : tour eiffel
             cglong[mapix].innerHTML = 2.294844;
             cglat[mapix].innerHTML = 48.85773;
-            zoom[mapix] = 13; // default zoom
+            cgzoom[mapix] = 13; // default zoom
             isset[mapix] = false;
         } 
       	cgaddress[mapix] =  afield.querySelector("input.cgaddress");
         cgaddressfid[mapix] = afield.querySelector('#cgaddressfid');
-        zoom[mapix] = cgaddressfid[mapix].getAttribute('data-mapzoom');
-        popup[mapix] = cgaddressfid[mapix].getAttribute('data-popup');
-        iti[mapix] = cgaddressfid[mapix].getAttribute('data-iti');
+        cgzoom[mapix] = cgaddressfid[mapix].getAttribute('data-mapzoom');
+        cgpopup[mapix] = cgaddressfid[mapix].getAttribute('data-popup');
+        cgiti[mapix] = cgaddressfid[mapix].getAttribute('data-iti');
         // create map
-        cgmap[mapix] = (L.map(amap).setView([cglat[mapix].innerHTML, cglong[mapix].innerHTML], zoom[mapix]));
+        cgmap[mapix] = (L.map(amap).setView([cglat[mapix].innerHTML, cglong[mapix].innerHTML], cgzoom[mapix]));
         mapix +=1;
     });
 
     if (document.body.classList.contains('admin')) { // conflict Leaflet and Bootstrap  
         first_map = document.querySelector('.cgaddress_field');
         mapparent = first_map.parentNode.parentNode.parentNode.parentNode.parentNode;
-        observer = new MutationObserver(function(){
+        cgobserver = new MutationObserver(function(){
                         if(mapparent.style.display != 'none'){
                             document.querySelectorAll('.cgaddress_field').forEach( function (amap) {
                                 mapid = amap.getAttribute('map_id');
@@ -49,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             });
                         }
                    });
-        observer.observe(mapparent, {attributes: true});
+        cgobserver.observe(mapparent, {attributes: true});
      };
 
     document.querySelectorAll('.cgaddress_field').forEach( function (amap) {
@@ -62,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }).addTo(cgmap[mapid]);    
         if (isset[mapid]) { // add marker
             cgmarker[mapid] = L.marker([cglat[mapid].innerHTML, cglong[mapid].innerHTML]).addTo(cgmap[mapid]);
-            if (popup[mapid] == 'true') {
+            if (cgpopup[mapid] == 'true') {
                 createPopup(mapid,cglat[mapid].innerHTML, cglong[mapid].innerHTML);
             }
         }
@@ -73,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 id = this.parentNode.getAttribute('map_id');
                 minlength = cgaddressfid[id].getAttribute('data-minlength')
                 if (cgaddress[id].value.length <  minlength ) {
-                    cleardisplay(id);
+                    clearaddress(id);
                     return
                 }
             /*
@@ -85,13 +83,13 @@ document.addEventListener('DOMContentLoaded', function() {
             })
         });
     /* déclenchement de la recherche sur action bouton */
-        search[mapid] = amap.querySelector("#cgaddress_search");
-        if (search[mapid]) {
+        cgsearch[mapid] = amap.querySelector("#cgaddress_search");
+        if (cgsearch[mapid]) {
             ['click', 'touchstart' ].forEach(type => {
-                search[mapid].addEventListener(type,function(){ 
+                cgsearch[mapid].addEventListener(type,function(){ 
                     id = this.parentNode.getAttribute('map_id');
                     minlength = cgaddressfid[id].getAttribute('data-minlength')
-                    cleardisplay(id);
+                    clearaddress(id);
                     if (cgaddress[id].value.length < minlength ) {
                         return
                     }
@@ -123,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     cgaddress[id].value = addr;
                     cglong[id].innerHTML = lonlat[0];
                     cglat[id].innerHTML = lonlat[1];
-                    if (popup == 'true') {
+                    if (cgpopup[id] == 'true') {
                         createPopup(id,lonlat[1], lonlat[0]);
                     }
                     cglibs[id].style.display = 'inline-flex';
@@ -139,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function getAddrFr(amap,e,url) {
     mapid = amap.getAttribute('map_id');
 	result = amap.querySelector("#cg_result");
-	cleardisplay(mapid);
+	clearaddress(mapid);
 	result.style.display = 'inline-flex';
 	result.innerHTML = "Chargement...";
 
@@ -173,7 +171,7 @@ function getAddrFr(amap,e,url) {
                     if (cgmarker[mapid]) cgmarker[mapid].remove();
                     cgmarker[mapid] = L.marker([cglat[mapid].value, cglong[mapid].value]).addTo(cgmap[mapid]);
                     cgmarker[mapid].bindPopup(cgaddress[mapid].value);
-                    if (popup[mapid] == 'true') {
+                    if (cgpopup[mapid] == 'true') {
                         createPopup(mapid,cglat[mapid].value, cglong[mapid].value);
                     }
 					cgonelist[mapid].style.display = "none"
@@ -203,17 +201,17 @@ function getAddrFr(amap,e,url) {
 			}
 		}
 		xhr.send(null);
-	},callDelay);
+	},cgcallDelay);
 }
 function createPopup(mapid,alat,along) {
     max = cgmap[mapid].getSize().x - 20;
     popuptext = cgaddress[mapid].value;
-    if (iti[mapid] == 'true') { // affiche un lien Venir ici
+    if (cgiti[mapid] == 'true') { // affiche un lien Venir ici
         popuptext += '<br><a href="https://www.openstreetmap.org/directions?route=%3B'+alat+'%2C'+along+'#map=14/'+alat+'/'+along+'" target="_blank" rel="noopener">Venir ici</a>'; 
     }
     cgmarker[mapid].bindPopup(popuptext,{maxWidth: max,keepInView:true});
 }
-function cleardisplay(mapid) {
+function clearaddress(mapid) {
 	cglong[mapid].value = ""; cglong[mapid].innerHTML = "";
 	cglat[mapid].value = "";cglat[mapid].innerHTML ="";
 	cglibs[mapid].style.display = 'none';

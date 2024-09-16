@@ -1,12 +1,8 @@
 <?php
 /*
-; Fields CG Address
-; Recuperation des donnees GPS, nom d'une ville depuis geo.api.gouv.fr
-; Version			: 1.0.0
-; Package			: Joomla 4.x/5.x
+* CG Address Plugin  - Joomla 4.x/5.x 
 ; copyright 		: Copyright (C) 2024 ConseilGouz. All rights reserved.
 ; license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
-; adaptation pour récupérer les codes GPS de la ville et vérification du nombre de reponses
 */
 namespace ConseilGouz\Plugin\Fields\Cgaddress\Form\Field;
 
@@ -24,8 +20,8 @@ class CgaddressField extends FormField
         $base	= 'media/plg_fields_cgaddress/';
         $def_form = '<div class="cgaddress_field">';
         $minlength = (int)$this->getAttribute('minlength');
-        $mapheight = (int)$this->getAttribute('mapheight');
-        $mapwidth = (int)$this->getAttribute('mapwidth');
+        $mapheight = $this->getAttribute('mapheight');
+        $mapwidth = $this->getAttribute('mapwidth');
         $mapzoom = (int)$this->getAttribute('mapzoom');
         $showpopup = $this->getAttribute('showpopup');
         $showiti = $this->getAttribute('showiti');
@@ -36,7 +32,7 @@ class CgaddressField extends FormField
 			$long = $val[1]; $lat = $val[2];
 		}
 		/** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
-		$wa = Factory::getDocument()->getWebAssetManager();
+		$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
         $wa->registerAndUseStyle('leaflet','https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
         $wa->registerAndUseStyle('cgaddress',$base.'css/cgaddress.css');
         $wa->registerAndUseScript('leaflet','https://unpkg.com/leaflet@1.9.4/dist/leaflet.js');

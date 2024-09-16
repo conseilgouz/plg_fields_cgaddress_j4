@@ -2,8 +2,6 @@
 
 /**
 ; Fields CG Address
-; Recuperation des donnees GPS, nom d'une ville depuis geo.api.gouv.fr
-; Version			: 1.0.0
 ; Package			: Joomla 4.x/5.x
 ; copyright 		: Copyright (C) 2024 ConseilGouz. All rights reserved.
 ; license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL

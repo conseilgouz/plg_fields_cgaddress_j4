@@ -3,6 +3,19 @@
 		<element>plg_fields_cgaddress</element>
 		<type>plugin</type>
 		<group>fields</group>
+		<version>1.0.5</version>
+        <note>
+            <item>Update : 16/09/2024</item>
+        </note>
+        <fix>
+            <item>Conflict with CGZipCode plugin</item>
+            <item>Incorrect Map Height/Width</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>plg_fields_cgaddress</element>
+		<type>plugin</type>
+		<group>fields</group>
 		<version>1.0.4</version>
         <note>
             <item>Update : 15/09/2024</item>
