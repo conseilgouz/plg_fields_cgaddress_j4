@@ -1,7 +1,7 @@
 <?php
 /*
 * CG Address Plugin  - Joomla 4.x/5.x 
-; copyright 		: Copyright (C) 2024 ConseilGouz. All rights reserved.
+; copyright 		: Copyright (C) 2025 ConseilGouz. All rights reserved.
 ; license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
 */
 defined('_JEXEC') or die;
@@ -33,6 +33,7 @@ $def_form .= '<input type="text" name="cgaddress" value="'.$address.'" class="cg
 $def_form .= ', GPS Long. <span class="cglong">'.$long.'</span> - Lat. <span class="cglat" >'.$lat.'</span></span>';
 echo $def_form;
 
+$minlength = $field->fieldparams->get('minlength','10');
 $mapwidth = $field->fieldparams->get('mapwidth','100%');
 $mapheight = $field->fieldparams->get('mapheight','300px');
 $mapzoom = $field->fieldparams->get('mapzoom','15');

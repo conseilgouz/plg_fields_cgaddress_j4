@@ -3,6 +3,18 @@
 		<element>plg_fields_cgaddress</element>
 		<type>plugin</type>
 		<group>fields</group>
+		<version>1.0.6</version>
+        <note>
+            <item>Update : 23/01/2024</item>
+        </note>
+        <fix>
+            <item>Undefined minlength notice </item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>plg_fields_cgaddress</element>
+		<type>plugin</type>
+		<group>fields</group>
 		<version>1.0.5</version>
         <note>
             <item>Update : 16/09/2024</item>
