@@ -4,7 +4,8 @@
 		<inlinehelp button="show"/>
 	</config>
 	<fields name="fieldparams">
-		<fieldset name="fieldparams" addfieldpath="/plugins/fields/cgaddress/src/Form/Field">
+		<fieldset name="fieldparams"  addfieldprefix="ConseilGouz\Library\Field">
+            <field name="version" type="version" extension="plugin/cgaddress" margintop="-26.5em" float="right"/>
 			<field
 				name="minlength"
 				type="number" default="10"
